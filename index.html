@@ -1,24 +1,30 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>DorkGPT Local - Demo</title>
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
   <h1>DorkGPT (sin API ni IA)</h1>
   
-  <!-- Formulario para que el usuario seleccione o escriba algo -->
+  <!-- Input para palabras clave personalizadas -->
   <div>
     <label for="customKeyword">Ingresa tu palabra clave (opcional): </label>
     <input type="text" id="customKeyword" placeholder="admin, login, etc.">
   </div>
 
+  <!-- Botones para generar y copiar -->
   <button id="generateBtn">Generar Dork</button>
+  <button id="copyBtn">Copiar Dorks</button>
 
-  <!-- Aquí se mostrarán los resultados -->
+  <!-- Contenedor donde se muestran los dorks generados -->
   <div id="result"></div>
-
+  
+  <!-- Sección de historial (opcional) -->
+  <h2>Historial de Dorks</h2>
+  <div id="history"></div>
+  
   <script src="js/main.js"></script>
 </body>
 </html>
