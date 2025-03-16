@@ -1,40 +1,37 @@
 body {
   font-family: Arial, sans-serif;
   margin: 20px;
-  background-color: #f5f5f5;
+  background-color: #f0f0f0;
 }
-
 h1, h2 {
   color: #333;
 }
-
-div {
-  margin-bottom: 15px;
+label {
+  display: block;
+  margin-top: 10px;
 }
-
-input[type="text"] {
+input, select, button {
+  margin: 5px 0;
   padding: 8px;
-  width: 250px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  font-size: 1rem;
 }
-
 button {
-  padding: 8px 15px;
+  cursor: pointer;
+  background-color: #007acc;
+  color: #fff;
   border: none;
   border-radius: 4px;
-  background-color: #007acc;
-  color: white;
-  cursor: pointer;
 }
-
 button:hover {
   background-color: #005f99;
 }
-
 #result, #history {
   background: #fff;
-  border: 1px solid #ddd;
   padding: 10px;
+  border: 1px solid #ccc;
   border-radius: 4px;
+  margin-top: 15px;
+}
+p {
+  margin: 5px 0;
 }
