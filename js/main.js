@@ -332,13 +332,14 @@
     const copyBtn = document.getElementById("copyBtn");
     const categorySelect = document.getElementById("categorySelect");
 
-    // Si existe el select de categoría, lo poblamos con las opciones
+    // Si existe el select de categoría, lo poblamos
     if (categorySelect) {
       categorySelect.innerHTML = "";
       const defaultOption = document.createElement("option");
       defaultOption.value = "";
       defaultOption.text = "Todas las categorías";
       categorySelect.appendChild(defaultOption);
+
       categories.forEach(cat => {
         const option = document.createElement("option");
         option.value = cat.name;
@@ -362,7 +363,7 @@
         resultDiv.appendChild(p);
       });
 
-      // Actualiza el historial (los nuevos dorks se agregan al principio)
+      // Actualiza el historial (nuevos dorks se agregan al inicio)
       dorkHistory = generatedDorks.concat(dorkHistory);
       if (historyDiv) {
         historyDiv.innerHTML = "";
@@ -385,6 +386,13 @@
         navigator.clipboard.writeText(textToCopy)
           .then(() => alert("¡Dorks copiados al portapapeles!"))
           .catch(err => alert("Error al copiar: " + err));
+      });
+    }
+
+    // Dispara la generación cada vez que se cambia la categoría (opcional)
+    if (categorySelect) {
+      categorySelect.addEventListener("change", () => {
+        generateBtn.click();
       });
     }
   });
