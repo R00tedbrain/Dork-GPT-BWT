@@ -1,0 +1,71 @@
+/*************************************************************
+   CSS Exclusivo para la sección de Animación (Space Travel)
+   Se evita tocar "body" u otros elementos globales de tu siti0
+*************************************************************/
+
+/* Contenedor general de la animación */
+.space-animation-section {
+  position: relative; 
+  width: 100%;
+  min-height: 700px; /* Ajusta según necesites */
+  background: #34496a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  padding: 2rem 0; /* Un poco de separación vertical */
+}
+
+/* Lienzo ThreeJS para las estrellas */
+#webgl {
+  width: 800px;
+  height: 600px;
+  position: absolute;
+  z-index: -1;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Segundo canvas (objetos flotando) */
+canvas.webgl2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  outline: none;
+  z-index: 2;
+}
+
+/* Fondo del SVG (el semicírculo) */
+#bg-box {
+  width: 802px;
+  height: 602px;
+  position: absolute;
+  z-index: -1;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* El contenedor del SVG principal (robot, etc.) */
+.svg-box {
+  width: 800px;
+  height: 600px;
+  position: relative;
+  z-index: 1;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.svg-box #robot {
+  cursor: pointer;
+}
+
+/* Esto evita que el SVG dentro se fuerce a escalar de forma rara.
+   Ajusta si deseas responsive total, pero así respeta el tamaño original. */
+.svg-box svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
