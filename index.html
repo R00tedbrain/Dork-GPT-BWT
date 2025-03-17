@@ -937,7 +937,7 @@
         generateBtn.addEventListener("click", () => {
           const customKeyword = customKeywordInput.value;
           const selectedCategory = categorySelect ? categorySelect.value : "";
-          const generatedDorks = generateMultipleDorks(customKeyword, selectedCategory, 5);
+          const generatedDorks = generateMultipleDorks(customKeyword, selectedCategory, 15);
 
           resultDiv.innerHTML = "";
           generatedDorks.forEach(item => {
