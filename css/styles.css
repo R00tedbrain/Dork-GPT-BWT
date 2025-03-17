@@ -1,37 +1,144 @@
+/* Estilos principales del BODY */
 body {
   font-family: Arial, sans-serif;
-  margin: 20px;
+  margin: 0;
+  padding: 0;
   background-color: #f0f0f0;
 }
-h1, h2 {
+
+/* Sección de explicación & título principal */
+#intro-section {
+  background: #fff;
+  padding: 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.main-title {
+  text-align: center;
+  font-size: 2rem;
+  color: #007acc;
+  margin-bottom: 1.5rem;
+}
+
+#intro-section .explanation {
+  line-height: 1.6;
+  color: #333;
+  font-size: 0.95rem;
+}
+
+#intro-section .explanation h2 {
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+  color: #007acc;
+}
+
+#intro-section .explanation h3 {
+  margin-top: 1.2rem;
+  margin-bottom: 0.8rem;
+  color: #444;
+}
+
+#intro-section .explanation ul {
+  list-style: disc;
+  padding-left: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+#intro-section .explanation code {
+  background: #efefef;
+  padding: 2px 5px;
+  border-radius: 3px;
+  color: #c7254e;
+  font-size: 0.9rem;
+}
+
+/* Contenedor general para el Generador */
+#dork-generator {
+  padding: 2rem;
+  background: #fff;
+  margin: 2rem auto;
+  max-width: 800px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* Títulos en el generador */
+#dork-generator h1, #dork-generator h2 {
+  text-align: center;
   color: #333;
 }
-label {
+
+/* Labels e inputs */
+#dork-generator label {
   display: block;
-  margin-top: 10px;
+  margin-top: 1rem;
+  font-weight: bold;
 }
-input, select, button {
-  margin: 5px 0;
-  padding: 8px;
+
+#dork-generator input,
+#dork-generator select,
+#dork-generator button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 0.5rem;
   font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
-button {
-  cursor: pointer;
+
+/* Botones */
+#dork-generator button {
   background-color: #007acc;
   color: #fff;
   border: none;
-  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 1rem;
 }
-button:hover {
+
+#dork-generator button:hover {
   background-color: #005f99;
 }
-#result, #history {
-  background: #fff;
+
+/* Resultados e historial */
+#result,
+#history {
+  margin-top: 1rem;
+  background: #f9f9f9;
   padding: 10px;
-  border: 1px solid #ccc;
   border-radius: 4px;
-  margin-top: 15px;
+  border: 1px solid #ddd;
 }
-p {
+
+#result p,
+#history p {
   margin: 5px 0;
+}
+
+/* Ajustes del svg-box y la sección de animación */
+.space-animation-section {
+  position: relative;
+  width: 100%;
+  background: #282e39;
+  margin: 2rem 0 0;
+  overflow: hidden;
+}
+
+.svg-box {
+  position: relative;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+/* Ajustes menores responsivos */
+@media (max-width: 768px) {
+  #intro-section, #dork-generator {
+    margin: 1rem;
+    padding: 1rem;
+  }
+  .main-title {
+    font-size: 1.7rem;
+  }
 }
