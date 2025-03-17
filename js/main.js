@@ -1,6 +1,6 @@
 (function() {
   // ======================================================
-  // Datos: Categorías y patrones (usando "example" como token)
+  // Datos: Categorías y MUCHOS patrones (usando "example" como token)
   // ======================================================
   const categories = [
     {
@@ -15,7 +15,17 @@
         'intext:"example" intitle:"workshop"',
         'intext:"example" intitle:"summit"',
         'intext:"example" intitle:"trade show"',
-        'intext:"example" intitle:"convention"'
+        'intext:"example" intitle:"convention"',
+        // combos más avanzados:
+        'intext:"example" (intitle:"ponencia" OR intitle:"ponencias")',
+        'intitle:"agenda" "example" intext:"evento" -site:gov',
+        'intext:"evento" inurl:"calendar" "example"',
+        'intext:"programa del evento" "example" filetype:pdf',
+        'intext:"próximas conferencias" + "example" + "fecha"',
+        'intitle:"próximos eventos" "example" -site:facebook.com',
+        'inurl:"/events" (intitle:"example" OR intext:"example") -github',
+        'intext:"inscripción" "example" inurl:"/register"',
+        '(intitle:"memorias" OR intext:"memorias del evento") "example" filetype:doc'
       ]
     },
     {
@@ -30,7 +40,16 @@
         'intext:"example" site:siteground.com',
         'intext:"example" site:dreamhost.com',
         'intext:"example" site:ipage.com',
-        'intext:"example" site:1and1.com'
+        'intext:"example" site:1and1.com',
+        // combos más avanzados:
+        'inurl:whois "example" -site:whois.com filetype:html',
+        '(intext:"registrant" OR intext:"tech-c") "example" filetype:pdf',
+        'intitle:"Domain History" "example" inurl:domainhistory',
+        'intext:"domain is for sale" "example" -site:sedo.com',
+        '("DNS lookup" OR "IP lookup") "example"',
+        'intext:"example" "domain parked" -site:sedo.com',
+        'inintitle:"DNS records" "example" filetype:txt',
+        'inurl:"/reverse-whois/" "example" -site:domaintools.com'
       ]
     },
     {
@@ -45,7 +64,16 @@
         'intext:"vulnerable"',
         'intext:"exploit"',
         'inurl:"cgi-bin"',
-        'intext:"SQL injection"'
+        'intext:"SQL injection"',
+        // combos más avanzados:
+        'intitle:"admin panel" intext:"example" -github',
+        'intitle:"login" "example" ("Username"|"Contraseña")',
+        'intitle:"dashboard" inurl:admin "example"',
+        'inurl:"shell.asp" OR inurl:"shell.php" "example"',
+        '(intext:"index of /" OR intitle:"index of /") "config" "example"',
+        '(intitle:"security camera" OR intitle:"CCTV") "example" inurl:axis-cgi',
+        'inurl:"server-status" "Apache Status" "example"',
+        'intext:"NAS login" "example" intitle:"Synology"'
       ]
     },
     {
@@ -60,7 +88,16 @@
         'intext:"social security number"',
         'intext:"bank account"',
         'intext:"medical records"',
-        'intext:"sensitive data"'
+        'intext:"sensitive data"',
+        // combos más avanzados:
+        'intitle:"index of" "credentials" + "example"',
+        'filetype:xlsx "example" "internal use only"',
+        'intext:"exported database" "example" filetype:sql',
+        'intext:"ID card" | "DNI" "example" -site:gov',
+        'intext:"private_key" OR intext:"BEGIN RSA PRIVATE KEY" "example"',
+        'intext:"leaked data" "example" filetype:txt -site:pastebin.com',
+        'intext:"example" "passport number" -site:gov',
+        'inurl:"/backup.zip" intext:"example"'
       ]
     },
     {
@@ -75,7 +112,16 @@
         'intext:"remote code execution"',
         'intext:"buffer overflow"',
         'intext:"directory traversal"',
-        'intext:"command injection"'
+        'intext:"command injection"',
+        // combos más avanzados:
+        '(intext:"bug bounty" OR intext:"recompensa") "example"',
+        '(intitle:"proof of concept" OR intitle:"POC") "example"',
+        'intext:"responsible disclosure" "example"',
+        'inurl:"/wp-content/plugins" intext:"vulnerable" "example"',
+        'intext:"exploit-db" "example" filetype:txt',
+        'intitle:"vulnerability" "example" inurl:"github.com"',
+        'intext:"public exploit" "example" -cve.mitre.org',
+        'filetype:md "example" (intext:"vulnerability" OR intext:"exploit")'
       ]
     },
     {
@@ -90,7 +136,16 @@
         'filetype:csv',
         'filetype:xml',
         'filetype:json',
-        'filetype:log'
+        'filetype:log',
+        // combos más avanzados:
+        'filetype:docx "example" intitle:"report"',
+        'filetype:xlsx "example" intext:"datos" -site:docs.google.com',
+        'filetype:pptx "example" intitle:"presentación"',
+        'filetype:mp4 "example" -site:youtube.com',
+        'filetype:sql "example" -gist.github.com',
+        'filetype:json "example" (intitle:"api" OR intext:"api key")',
+        'filetype:log "example" inurl:"/logs/"',
+        'filetype:js "example" intext:"apiKey"'
       ]
     },
     {
@@ -105,7 +160,16 @@
         'intext:"Wix"',
         'intext:"Squarespace"',
         'intext:"Ghost"',
-        'intext:"PrestaShop"'
+        'intext:"PrestaShop"',
+        // combos más avanzados:
+        'inurl:"wp-content/plugins" "example" intitle:"index of"',
+        'intext:"powered by Joomla" "example" -site:joomla.org',
+        'intext:"powered by Drupal" "example" filetype:pdf',
+        'inurl:"/app/etc/local.xml" "example" intext:"Magento"',
+        'intext:"maintenance mode" "example" inurl:"/shop"',
+        'inurl:"/wp-admin" intitle:"login" "example"',
+        'intitle:"woocommerce" "example" "product"',
+        'intext:"shopify" "example" filetype:pdf'
       ]
     },
     {
@@ -120,7 +184,16 @@
         'intext:"Lighttpd"',
         'intext:"Jetty"',
         'intext:"GlassFish"',
-        'intext:"Node.js"'
+        'intext:"Node.js"',
+        // combos más avanzados:
+        'intitle:"Apache Status" "example" -site:apache.org',
+        'intext:"server at" "example" filetype:log',
+        'intitle:"Index of /" "logs" "example" -github',
+        'inurl:"/server-status" intext:"Total accesses" "example"',
+        'intitle:"Status" "HAProxy Statistics" "example"',
+        'intitle:"nginx status" "example" intext:"Active connections"',
+        'intext:"PHP Version" "example" inurl:"/info.php"',
+        'intext:"Directory listing for /" "example" inurl:"cgi-bin"'
       ]
     },
     {
@@ -135,7 +208,16 @@
         'intext:"proxy server"',
         'intext:"network topology"',
         'intext:"network security"',
-        'intext:"Wi-Fi"'
+        'intext:"Wi-Fi"',
+        // combos más avanzados:
+        'intext:"SSID" "example" filetype:pdf',
+        '(intitle:"VPN configuration" OR intext:"VPN config") "example"',
+        'inurl:"/vpn/" "example" -site:cisco.com',
+        'intitle:"Proxy List" "example" filetype:txt',
+        'intext:"allowed subnets" "example" "ACL"',
+        'intext:"example" (intitle:"open ports" OR intext:"open ports")',
+        'filetype:pcap "example" -github -gitlab',
+        '(intext:"Topología de red" OR intext:"Network Diagram") "example" filetype:png'
       ]
     },
     {
@@ -150,7 +232,16 @@
         'intext:"machine learning"',
         'intext:"artificial intelligence"',
         'intext:"big data"',
-        'intext:"cloud computing"'
+        'intext:"cloud computing"',
+        // combos más avanzados:
+        'intitle:"API Reference" "example" -site:developer.mozilla.org',
+        'intext:"example" "github" inurl:"/blob/" filetype:py',
+        '(intitle:"documentation" OR intext:"documentation") "example" "sdk"',
+        'inurl:"/tutorials/" intext:"example" "programming"',
+        'intext:"microservices architecture" "example" filetype:ppt',
+        'intext:"example" (intitle:"code snippet" OR intext:"code snippet")',
+        'intitle:"release notes" "example" -site:microsoft.com',
+        '(intext:"machine learning model" OR intext:"dataset") "example" filetype:csv'
       ]
     },
     {
@@ -165,7 +256,16 @@
         'intext:"public records"',
         'intext:"freedom of information"',
         'intext:"regulatory body"',
-        'intext:"government report"'
+        'intext:"government report"',
+        // combos más avanzados:
+        'site:boe.es intext:"example" filetype:pdf',
+        'site:legifrance.gouv.fr "example" -site:vie-publique.fr',
+        'intitle:"public records" "example" inurl:.gov',
+        'intext:"resolución" "example" filetype:doc',
+        'intext:"sanción" "example" inurl:"resoluciones"',
+        '(intext:"policy update" OR intext:"nueva política") "example"',
+        'site:.gov "example" intitle:"bill" filetype:pdf',
+        'intext:"LICITACIÓN" "example" filetype:pdf'
       ]
     },
     {
@@ -180,7 +280,16 @@
         'intext:"college"',
         'intext:"educational institution"',
         'intext:"research grant"',
-        'intext:"academic conference"'
+        'intext:"academic conference"',
+        // combos más avanzados:
+        'intitle:"tesis" "example" filetype:pdf -site:scribd.com',
+        'intext:"abstract" "introduction" "example" filetype:docx',
+        'inurl:"/publications" intext:"example" intitle:"journal"',
+        'site:academia.edu "example" -inurl:login',
+        '(intext:"bibliografía" OR intext:"referencias") "example" filetype:pdf',
+        'intitle:"paper accepted" "example" -site:ieee.org',
+        'filetype:ppt (intitle:"congreso" OR intext:"congreso") "example"',
+        'intext:"unpublished results" "example" filetype:pdf'
       ]
     },
     {
@@ -195,7 +304,16 @@
         'intext:"example" site:forbes.com',
         'intext:"example" site:fortune.com',
         'intext:"example" site:marketwatch.com',
-        'intext:"example" site:financialtimes.com'
+        'intext:"example" site:financialtimes.com',
+        // combos más avanzados:
+        '(intitle:"Breaking News" OR intitle:"Última hora") "example"',
+        'intext:"example" "nota de prensa" filetype:pdf',
+        'site:elpais.com "example" -inurl:video',
+        'site:nytimes.com intext:"example" "article" -subscribe',
+        'intitle:"exclusiva" "example" -site:facebook.com',
+        'intext:"fue publicado" "example" (intitle:"noticia" OR intext:"noticia")',
+        'filetype:pdf "example" intext:"official statement"',
+        'intitle:"portada" "example" site:elmundo.es'
       ]
     },
     {
@@ -210,7 +328,16 @@
         'intext:"patent application" example',
         'intext:"trademark registration" example',
         'intext:"copyright infringement" example',
-        'intext:"patent litigation" example'
+        'intext:"patent litigation" example',
+        // combos más avanzados:
+        'intitle:"patent" inurl:"pdf" "example" -site:wipo.int',
+        'filetype:pdf "example" intext:"licensing agreement"',
+        'inurl:"/patents/" intext:"example" -github',
+        'intext:"cease and desist" "example" filetype:doc',
+        'intext:"technology transfer" "example" intitle:"portfolio"',
+        'intext:"IP ownership" "example" filetype:xlsx',
+        'site:patents.google.com "example"',
+        '(intitle:"invalidation" OR intext:"invalidar") "patente" "example"'
       ]
     },
     {
@@ -225,7 +352,16 @@
         'site:tumblr.com intext:"example"',
         'site:snapchat.com intext:"example"',
         'site:telegram.org intext:"example"',
-        'site:discord.com intext:"example"'
+        'site:discord.com intext:"example"',
+        // combos más avanzados:
+        'intitle:"twitter.com" "example" -site:twitter.com',
+        'intitle:"facebook.com" "example" -site:facebook.com',
+        '("profile" OR "bio") "example" site:instagram.com',
+        'site:linkedin.com inurl:"/posts/" "example"',
+        'intext:"joined on" "example" site:reddit.com',
+        'site:mastodon.social "example" intitle:"@example"',
+        '(intext:"example" OR intitle:"example") site:vk.com',
+        'intext:"example" "public group" inurl:"facebook.com/groups/"'
       ]
     },
     {
@@ -235,7 +371,16 @@
         'site:example.com intitle:"contact us"',
         'site:example.com intext:"mission statement"',
         'site:example.com intext:"vision statement"',
-        'site:example.com intext:"company history"'
+        'site:example.com intext:"company history"',
+        // combos más avanzados:
+        'site:example.com "quiénes somos" -blog',
+        'site:example.com ("board of directors" OR "directiva")',
+        'intext:"nuestra historia" "example" filetype:pdf',
+        'site:example.com intext:"valores corporativos"',
+        'site:example.com "annual meeting" "example"',
+        'intext:"organizational chart" "example" filetype:xlsx',
+        'site:example.com "memoria corporativa" filetype:pdf',
+        '(intext:"sede principal" OR intext:"headquarters") "example"'
       ]
     },
     {
@@ -245,7 +390,16 @@
         'site:twitter.com inurl:status "works at example"',
         'site:facebook.com inurl:profile "works at example"',
         'site:xing.com inurl:profile "employee at example"',
-        'site:glassdoor.com intext:"example"'
+        'site:glassdoor.com intext:"example"',
+        // combos más avanzados:
+        'intext:"people also viewed" "example" site:linkedin.com',
+        '"hired by example" OR "joined example" -job -jobs -careers',
+        'intitle:"team" intext:"example" filetype:ppt',
+        'site:indeed.com "example" intext:"employee reviews"',
+        'intext:"our staff" "example" inurl:"/team/"',
+        'inurl:"/employees" intitle:"example" -blog',
+        'site:example.com "current openings" "example" -blog',
+        'intext:"Colleague at example" "example" -site:linkedin.com'
       ]
     },
     {
@@ -255,7 +409,16 @@
         'site:example.com intitle:"services"',
         'site:example.com intext:"product catalog"',
         'site:example.com intext:"service catalog"',
-        'site:example.com intext:"pricing"'
+        'site:example.com intext:"pricing"',
+        // combos más avanzados:
+        'site:example.com "nuestros productos" -blog',
+        'site:example.com inurl:"/pricing" "example"',
+        'intitle:"tarifas" "example" filetype:pdf',
+        'intext:"características principales" "example" -review',
+        'intext:"comparativa" "example" inurl:"/productos/"',
+        'intext:"este servicio incluye" "example" site:example.com',
+        'site:example.com intext:"lista de precios" filetype:xlsx',
+        '(intitle:"oferta" OR intext:"oferta") "example" site:example.com'
       ]
     },
     {
@@ -265,7 +428,16 @@
         'intext:"market share" example',
         'intext:"SWOT analysis" example',
         'intext:"benchmarking" example',
-        'intext:"competitive landscape" example'
+        'intext:"competitive landscape" example',
+        // combos más avanzados:
+        'intext:"competidores" "example" filetype:ppt',
+        '(intitle:"market research" OR intext:"market research") "example"',
+        'intext:"pricing strategy" "example" filetype:pdf',
+        'intitle:"comparativa de precios" "example" -blog',
+        '(intext:"análisis de la competencia" OR "competitive advantage") "example"',
+        'intext:"análisis DAFO" "example" filetype:doc',
+        'site:example.com intext:"benchmark" -blog',
+        'intitle:"Comparación de mercado" "example" filetype:xlsx'
       ]
     },
     {
@@ -275,7 +447,46 @@
         'site:example.com intext:"financial statements"',
         'site:example.com intext:"quarterly earnings"',
         'site:example.com intext:"investor relations"',
-        'site:example.com intext:"SEC filings"'
+        'site:example.com intext:"SEC filings"',
+        // combos más avanzados:
+        'site:example.com "balance sheet" filetype:xls',
+        'site:example.com intitle:"informe anual" "example"',
+        'intext:"estado de resultados" "example" filetype:pdf',
+        'site:example.com intext:"memoria económica" -blog',
+        'site:example.com "earnings call" "example"',
+        'site:example.com "cash flow" "example" filetype:csv',
+        'intext:"Financial Performance" "example" -blog',
+        'intitle:"quarterly statement" "example" filetype:pdf'
+      ]
+    },
+    // Nueva categoría: "Organizaciones sin ánimo de lucro" (ejemplo)
+    {
+      name: "Organizaciones sin ánimo de lucro",
+      patterns: [
+        'site:.org intext:"donar" "example"',
+        'intitle:"fundación" "example" -site:fundacionexample.org',
+        'intext:"haz tu aportación" "example" filetype:pdf',
+        '(intext:"donar para" OR intext:"haz una donación") "example"',
+        'site:give.org intext:"example"',
+        'intext:"organización sin fines de lucro" "example" intitle:"contribuir"',
+        '(intitle:"ONG" OR intext:"ONG") "example" -site:wikipedia.org',
+        'inurl:"/donate" "example" -site:paypal.com',
+        'intext:"transparencia" "example" filetype:doc',
+        '(intext:"donaciones" OR intext:"colabora") "example" site:.org'
+      ]
+    },
+    // Otra categoría nueva: "Blogs y artículos relacionados"
+    {
+      name: "Blogs y artículos relacionados",
+      patterns: [
+        'inurl:blog "example" -site:blogger.com -site:wordpress.com',
+        'intitle:"blog" intext:"example" -site:medium.com',
+        '(intext:"publicado por" OR intext:"posted by") "example" intitle:"blog"',
+        'site:medium.com "example" -inurl:"/tag/"',
+        '(intitle:"Top 10" OR intitle:"mejores 10") "blogs" "example"',
+        'inurl:"/category/" "example" intitle:"blog"',
+        'intext:"guest post" "example" -site:guestposttracker.com',
+        'intext:"artículo patrocinado" "example" "blog"'
       ]
     }
   ];
@@ -288,9 +499,8 @@
   }
 
   // ======================================================
-  // Función para generar un dork
-  // customKeyword: reemplaza el token "example" en el patrón.
-  // categoryName: si se especifica, se usará la categoría indicada; de lo contrario, se elige una aleatoria.
+  // Generar un dork
+  // (reemplaza 'example' por customKeyword)
   // ======================================================
   function generateDork(customKeyword = "", categoryName = "") {
     let selectedCategory;
@@ -302,7 +512,8 @@
     }
     let pattern = getRandomElement(selectedCategory.patterns);
     if (customKeyword.trim() !== "") {
-      pattern = pattern.replace(/example/gi, customKeyword.trim());
+      const regex = new RegExp("example", "gi");
+      pattern = pattern.replace(regex, customKeyword.trim());
     }
     return {
       dork: pattern,
@@ -311,7 +522,7 @@
   }
 
   // ======================================================
-  // Función para generar múltiples dorks
+  // Generar múltiples dorks
   // ======================================================
   function generateMultipleDorks(customKeyword = "", categoryName = "", count = 5) {
     const results = [];
@@ -322,7 +533,7 @@
   }
 
   // ======================================================
-  // Manejo de la interfaz (UI) y eventos
+  // Manejo de la interfaz y eventos
   // ======================================================
   document.addEventListener("DOMContentLoaded", () => {
     const generateBtn = document.getElementById("generateBtn");
@@ -332,7 +543,7 @@
     const copyBtn = document.getElementById("copyBtn");
     const categorySelect = document.getElementById("categorySelect");
 
-    // Si existe el select de categoría, lo poblamos
+    // Poblar el select de categoría
     if (categorySelect) {
       categorySelect.innerHTML = "";
       const defaultOption = document.createElement("option");
@@ -354,7 +565,11 @@
     generateBtn.addEventListener("click", () => {
       const customKeyword = customKeywordInput.value;
       const selectedCategory = categorySelect ? categorySelect.value : "";
-      const generatedDorks = generateMultipleDorks(customKeyword, selectedCategory, 5);
+
+      // =========================
+      // CAMBIO DE 5 A 10 AQUÍ:
+      // =========================
+      const generatedDorks = generateMultipleDorks(customKeyword, selectedCategory, 10);
 
       resultDiv.innerHTML = "";
       generatedDorks.forEach(item => {
@@ -363,7 +578,7 @@
         resultDiv.appendChild(p);
       });
 
-      // Actualiza el historial (nuevos dorks se agregan al inicio)
+      // Actualiza historial
       dorkHistory = generatedDorks.concat(dorkHistory);
       if (historyDiv) {
         historyDiv.innerHTML = "";
@@ -375,7 +590,7 @@
       }
     });
 
-    // Evento para copiar los dorks generados al portapapeles
+    // Evento para copiar dorks
     if (copyBtn) {
       copyBtn.addEventListener("click", () => {
         let textToCopy = "";
@@ -389,7 +604,7 @@
       });
     }
 
-    // Dispara la generación cada vez que se cambia la categoría (opcional)
+    // Cada vez que cambie la categoría, generamos directamente
     if (categorySelect) {
       categorySelect.addEventListener("change", () => {
         generateBtn.click();
